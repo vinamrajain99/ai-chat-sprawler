@@ -4,9 +4,5 @@ dist/
 *.log
 .vite/
 
-# Local-only session-handoff and product docs — not for the public repo
-Project requirements.md
-PROGRESS.md
-TODO.md
-DECISIONS.md
+# Local development artifacts
 local testing screenshots/

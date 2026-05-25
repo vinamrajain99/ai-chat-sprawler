@@ -1,0 +1,9 @@
+# AI chat sprawler
+
+When using AI chatbots, I often get responses containing a lot of text, where I want to ask follow up questions to better understand certain parts of the text response. I want an easy way to select a specific parts of a response and ask follow up questions about it. 
+
+Goal is to build a product, which allows me to branch new chat sessions, within my current chat app, by selecting portion of text in the chatbot response. It should atleast support Gemini, ChatGPT or Claude webapp, accessed through chrome browser. 
+
+I envision it as a minimal UI that comes up everytime I select a portion of text in a AI chatbot.  The UI helps me easily branch into new chat sessions within my current chat app. In the new session, the product automatically summarizes only the relevant context from the original chat session, and the selected text. This information is needed to reliably answer the ask in the branch session, about the selected text. 
+
+When I select any text block in app, the product’s UI that shows up and gives helpful clickable options in terms of the question you might want to ask - for example, what is? why? It also gives a minimal icon to expand into a text box, where the user can enter custom ask regarding the select text. Once you select one of a clickable questions, or enter custom ask, the product opens a new chat session (branch) in the same chat app you are using, as a new tab, and does not disrupt the parent chat thread. In the branch’s input box, it formats and auto populates the selected text, the summary (relevant context around selected text from parent chat), and the question user wants to ask about it. It should basically draft and auto populate a single command with all info organized, so the chatbot in branch session can provide relevant responses.

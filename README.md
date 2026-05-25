@@ -92,6 +92,8 @@ Each chat app is encapsulated behind a `ChatAppAdapter` interface that owns its 
 
 Key design choices: the popup lives in a Shadow DOM so chat-app styles don't leak into it; handoff between parent and branch tabs uses `chrome.storage.session` keyed by the new tab's id (survives the gap between `chrome.tabs.create` and the new tab's content script booting); the default context is the full prior conversation (no LLM call, deterministic, zero setup); opt-in summarization shortens this for long chats; injection uses `execCommand('insertText')` with a `beforeinput` `InputEvent` fallback for editor families like ProseMirror/Quill/Lexical that ignore naive `.value =` assignment.
 
+See [`DECISIONS.md`](./DECISIONS.md) for the full ADR-style rationale behind each major choice, [`PROGRESS.md`](./PROGRESS.md) for the dated session log, and [`TODO.md`](./TODO.md) for the current backlog.
+
 ### Directory layout
 
 ```

@@ -62,14 +62,14 @@ Four execution contexts:
 Each chatbot is encapsulated behind a `ChatAppAdapter` interface (selectors + injection logic). Adding a new chat app = one new adapter file + entries in `AppId` (messages.ts), `CHAT_HOSTS` (manifest.ts), and `NEW_CHAT_URLS` (background/index.ts). TypeScript's `Record<AppId, string>` on `NEW_CHAT_URLS` makes missed wiring a build error, not a runtime surprise.
 
 ## Files of note
-- `README.md` — public-facing intro, install/usage, settings, architecture, contributor guide (`add a new chat-app adapter`). Published.
-- `LICENSE` — MIT, Vinamra Jain 2026. Published.
-- `Project requirements.md` — original product brief. **Gitignored** (local-only).
-- `DECISIONS.md` — architectural decisions and rationale. **Gitignored** (local-only).
-- `TODO.md` — backlog and current focus. **Gitignored** (local-only).
-- `PROGRESS.md` — dated session log. **Gitignored** (local-only).
+- `README.md` — public-facing intro, install/usage, settings, architecture, contributor guide (`add a new chat-app adapter`).
+- `LICENSE` — MIT, Vinamra Jain 2026.
+- `Project requirements.md` — original product brief.
+- `DECISIONS.md` — architectural decisions and rationale.
+- `TODO.md` — backlog and current focus.
+- `PROGRESS.md` — dated session log.
 
-The four gitignored files are session-handoff aids for AI-assisted development on this repo. They're excluded from the public GitHub repo per project owner's choice; keep using them for session continuity.
+All of the above are checked into the public GitHub repo. The session-handoff files (TODO, PROGRESS, DECISIONS) double as transparent dev-history for OSS visitors and as continuity aids across AI-assisted dev sessions.
 
 ## Working rules
 - Don't claim a UI change works without exercising it in a real browser on chatgpt.com, claude.ai, and gemini.google.com.
