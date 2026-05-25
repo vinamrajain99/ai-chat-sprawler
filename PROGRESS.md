@@ -227,3 +227,35 @@
 - **Auto-submit toggle** — small settings extension, but watch for per-app submit-semantics (ChatGPT Enter vs. shift-Enter, Claude submit detection, Gemini's Quill).
 - **Inject-failure recovery** — still in Tech backlog; covers the ChatGPT login-redirect case. ~30 min.
 - **Firefox port** — larger; gets the extension to a meaningfully wider audience.
+
+## Session 2026-05-25 (continued) — Open-source rollout: README, LICENSE, GitHub publish
+
+**Shipped:**
+- **`README.md` created** (~150 lines, technical+concise tone per user preference). Sections: tagline, motivation, supported apps, install-from-source, usage, settings (preset questions + opt-in Anthropic summarization), privacy, build/develop commands, architecture (with directory layout), `add a new chat-app adapter` contributor guide, known limitations, license.
+- **`LICENSE` created** — MIT, `Copyright (c) 2026 Vinamra Jain`. (Initially had a `<Your Name>` placeholder; filled in once user confirmed the name.)
+- **GitHub repo published** — `https://github.com/vinamrajain99/ai-chat-sprawler` (public). Two commits live:
+  - `e8116ba` "Initial commit: AI Chat Sprawler" — 28 files, 3,678 insertions.
+  - `35505a9` "Publish project docs to the open-source repo" — 7 files changed, 623+/12-.
+- **GitHub handle discovered via `gh auth status`** (`vinamrajain99`) — filled into the README install command. Avoided a separate round-trip.
+- **Sensitive-info audit on all four project docs.** Read `Project requirements.md`, `TODO.md`, `PROGRESS.md`, `DECISIONS.md` end-to-end and confirmed: no filesystem paths, no API keys, no emails, no contact info. "Vinamra Jain" appears only in TODO.md (same as LICENSE), no new exposure. Reported findings to user before any publish-action.
+- **Reversed the initial gitignore-the-docs decision.** First commit had `Project requirements.md`, `TODO.md`, `PROGRESS.md`, `DECISIONS.md` excluded via `.gitignore` for caution. User asked about backup safety on laptop loss → explained that gitignored files have no GitHub copy → user decided to publish all docs after audit confirmed they're safe. Second commit landed them in the public repo. See DECISIONS.md D22.
+- **Docs touched to reflect the published state:**
+  - `CLAUDE.md` "Files of note" section rewritten — all six docs (README, LICENSE, Project requirements, DECISIONS, TODO, PROGRESS) listed as part of the public repo.
+  - `TODO.md` current-focus updated with the GitHub URL and the "all docs published" note; "Open-source rollout" checklist marked done where appropriate (`git init`, repo create, push, README install command).
+  - `README.md` architecture section gained a closing paragraph pointing to `DECISIONS.md` / `PROGRESS.md` / `TODO.md` for deeper context (previously stripped when docs were gitignored).
+- **`.gitignore` final shape:** `node_modules/`, `dist/`, `.DS_Store`, `*.log`, `.vite/`, `local testing screenshots/`. The four project docs are no longer excluded.
+
+**In progress:** nothing.
+
+**Blocked:** nothing.
+
+**Next session should pick up:** unchanged from the earlier 2026-05-25 entry — the post-MVP backlog is open. Top picks (in order of user-value):
+1. **Multi-provider summarization** (OpenAI + Gemini) — biggest unlock; Phase F continuation; medium effort.
+2. **Auto-submit toggle** — small settings extension.
+3. **Inject-failure recovery** — narrow but mildly infuriating ChatGPT login-redirect case; ~30 min.
+4. **Firefox port** — larger; reaches more users.
+
+Open-source polish still TODO (not blockers):
+- Add an extension icon (manifest currently has none; Chrome shows the default puzzle piece).
+- Demo GIF or static screenshot in README.
+- Chrome Web Store listing assets when ready to ship there.

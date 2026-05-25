@@ -256,3 +256,27 @@ Verified working on all three apps: ChatGPT (the bug case — multi-branch test 
   - `insertTextIntoEditor`'s contract is now: **replace the editor's content with `text`**, not **append `text` to the editor**. The function name is a slight misnomer (insert → replace); rename to `setEditorContent` is a small follow-up if the API surface ever expands. Documented in the function's docstring.
   - The Range + Selection API call assumes `editor` is a contenteditable element with mutable selection. All three current adapters target either ProseMirror (`div.ProseMirror`) or Quill (`div.ql-editor`) instances inside a contenteditable host — both work. If a future adapter targets a `<textarea>` (Bard's old UI, e.g.), this code path will need a textarea branch (`editor.setSelectionRange(0, editor.value.length)` then `insertText`).
   - The fix is defensive across all three apps, not just ChatGPT. If Claude or Gemini ever introduce draft persistence we won't need to revisit.
+
+## 2026-05-25 — Project docs ship with the public repo
+
+### D22. All session-handoff docs are checked into the public GitHub repo, not gitignored
+**Context:** Preparing the project for open-sourcing surfaced a question about which files to publish. The session-handoff docs — `PROGRESS.md` (dated session log including AI-assisted-dev signals and some self-critical dev history), `TODO.md` (backlog), `DECISIONS.md` (ADR log), `Project requirements.md` (original product brief in first person) — contain dev-process material that some maintainers prefer to keep private. The initial commit had them excluded via `.gitignore` as a caution; the user re-examined that choice partway through the session.
+
+**Decision:** All four docs ship publicly alongside the code. The `.gitignore` was trimmed to only build/cache artifacts and a scratch screenshots folder (`node_modules/`, `dist/`, `.DS_Store`, `*.log`, `.vite/`, `local testing screenshots/`). README's architecture section links into `DECISIONS.md` / `PROGRESS.md` / `TODO.md` so readers can find them.
+
+The triggers for the reversal:
+1. **Backup risk** — gitignored files have no GitHub copy. If the laptop is lost, the docs are gone. The user explicitly raised this concern.
+2. **Audit confirmed safety** — full read-through of all four files found no filesystem paths, no API keys, no emails, no contact info. The only personal-identifier hit was "Vinamra Jain" in `TODO.md`, which is also on the public `LICENSE` — no net new exposure.
+3. **Single-history value** — keeping all project context (decisions, backlog, dev log) in the same repo means future contributors get the full picture without chasing private side-channels.
+
+**Alternatives considered:**
+- **Gitignore the docs, rely on local backup (Time Machine / iCloud / external drive).** Rejected — no version history on the docs, harder to migrate to a new machine, harder to share with collaborators. Backup is a different problem than version control.
+- **A separate private GitHub repo for the docs.** Rejected — splits project history across two places; future contributors lose context; setup and remote-juggling friction every session.
+- **Selective publish** (e.g., publish `DECISIONS.md` because it's ADR-style, keep `PROGRESS.md` because it has dev-history rough edges). Rejected — adds complexity, and the audit showed no file is meaningfully more sensitive than the others.
+- **Rewrite/sanitize PROGRESS.md before publishing** to strip self-critical phrases and AI-assistance signals. Rejected — honest dev history is increasingly common and valued in OSS; rewriting introduces drift between the file and what actually happened.
+
+**Consequences:**
+- Future commits to `TODO`, `PROGRESS`, `DECISIONS` will be public. Mind what gets written in them, especially URLs, IDs, third-party names, customer references, or anything that wouldn't belong in a public commit.
+- AI-assisted-dev workflow is visible: session logs, /save-progress entries, mentions of "the user", and prior-session self-correction (e.g., the D19 addendum disproving an earlier hypothesis). This is intentional transparency, not a leak.
+- `local testing screenshots/` stays gitignored — that's a scratch convention for in-progress debug captures, not part of the published surface. New developers who want to add their own debug screenshots can use the same path locally without polluting the repo.
+- If a future session needs to add genuinely private material (a customer name, a private URL, etc.), use a different storage location — these docs are no longer a safe private channel.
