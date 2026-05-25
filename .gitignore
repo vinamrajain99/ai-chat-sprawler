@@ -6,3 +6,7 @@ dist/
 
 # Local development artifacts
 local testing screenshots/
+
+# Session-handoff dev log — useful between sessions, low value for public readers.
+# See DECISIONS.md D22 addendum.
+PROGRESS.md

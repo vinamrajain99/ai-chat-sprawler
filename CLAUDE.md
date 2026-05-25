@@ -62,14 +62,14 @@ Four execution contexts:
 Each chatbot is encapsulated behind a `ChatAppAdapter` interface (selectors + injection logic). Adding a new chat app = one new adapter file + entries in `AppId` (messages.ts), `CHAT_HOSTS` (manifest.ts), and `NEW_CHAT_URLS` (background/index.ts). TypeScript's `Record<AppId, string>` on `NEW_CHAT_URLS` makes missed wiring a build error, not a runtime surprise.
 
 ## Files of note
-- `README.md` — public-facing intro, install/usage, settings, architecture, contributor guide (`add a new chat-app adapter`).
-- `LICENSE` — MIT, Vinamra Jain 2026.
-- `Project requirements.md` — original product brief.
-- `DECISIONS.md` — architectural decisions and rationale.
-- `TODO.md` — backlog and current focus.
-- `PROGRESS.md` — dated session log.
+- `README.md` — public-facing intro, install/usage, settings, architecture, contributor guide (`add a new chat-app adapter`). **Published.**
+- `LICENSE` — MIT, Vinamra Jain 2026. **Published.**
+- `Project requirements.md` — original product brief. **Published.**
+- `DECISIONS.md` — architectural decisions and rationale. **Published.**
+- `TODO.md` — backlog and current focus. **Published.**
+- `PROGRESS.md` — dated session log. **Gitignored** (local-only) — see DECISIONS.md D22 addendum for why this one was narrowed out of the publish-all-docs choice.
 
-All of the above are checked into the public GitHub repo. The session-handoff files (TODO, PROGRESS, DECISIONS) double as transparent dev-history for OSS visitors and as continuity aids across AI-assisted dev sessions.
+The session-handoff files (TODO, DECISIONS) double as transparent dev-history for OSS visitors and as continuity aids across AI-assisted dev sessions. PROGRESS.md stays local because it's a session-by-session delta of less value to outside readers; keep using it for handoff between sessions but don't expect it on a fresh clone.
 
 ## Working rules
 - Don't claim a UI change works without exercising it in a real browser on chatgpt.com, claude.ai, and gemini.google.com.
