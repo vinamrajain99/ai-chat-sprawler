@@ -1,7 +1,7 @@
 # TODO
 
 ## Current focus
-**Nothing in flight.** Phase G is now fully verified on all three apps (Claude focus regression fixed in 2026-05-25 session). ChatGPT cross-branch prompt-accumulation bug fixed in same session. `README.md` + `LICENSE` (MIT, Vinamra Jain 2026) added 2026-05-25 in preparation for open-sourcing on GitHub. Repo is live at `https://github.com/vinamrajain99/ai-chat-sprawler` (public). All project docs (TODO, PROGRESS, DECISIONS, Project requirements) are checked into the public repo for transparency. See `## Robustness fixes` below for the session's fixes and `## Backlog` for next-session candidates.
+**Nothing in flight.** Phase G is now fully verified on all three apps (Claude focus regression fixed in 2026-05-25 session). ChatGPT cross-branch prompt-accumulation bug fixed in same session. `README.md` + `LICENSE` (MIT, Vinamra Jain 2026) added 2026-05-25 in preparation for open-sourcing on GitHub. Repo is live at `https://github.com/vinamrajain99/ai-chat-sprawler` (public). Most project docs (TODO, DECISIONS, Project requirements) are checked into the public repo for transparency; PROGRESS.md is gitignored as session-handoff scaffolding — see DECISIONS.md D22 addendum. See `## Robustness fixes` below for the session's fixes and `## Backlog` for next-session candidates.
 
 ## Open-source rollout
 - [x] Update the README install instructions — GitHub handle (`vinamrajain99`) filled in 2026-05-25 via `gh auth status` lookup
